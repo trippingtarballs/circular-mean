@@ -1,10 +1,11 @@
 TrueColours = TrueColours || {};
 
 
-TrueColours.Helpers = function Helpers() {
-    'use strict';
+TrueColours.Helpers = TrueColours.Helpers || {
 
-    this.getMinute = function (time) {
+    getMinute: function (time) {
+        'use strict';
+
         var index = time.indexOf(':');
 
         if (!index) {
@@ -12,9 +13,11 @@ TrueColours.Helpers = function Helpers() {
         }
 
         return time.slice(-index);
-    };
+    },
 
-    this.getHour = function (time) {
+    getHour: function (time) {
+        'use strict';
+
         var index = time.indexOf(':');
 
         if (!index) {
@@ -22,9 +25,10 @@ TrueColours.Helpers = function Helpers() {
         }
 
         return time.slice(0, index);
-    };
+    },
 
-    this.getCircularMean = function (listOfTimes) {
+    getCircularMean: function (listOfTimes) {
+        'use strict';
 
         var bedTimes = [];
 
@@ -40,5 +44,6 @@ TrueColours.Helpers = function Helpers() {
         }, this);
 
         return bedTimes;
-    };
+    }
+
 };
