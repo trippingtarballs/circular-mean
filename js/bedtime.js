@@ -24,3 +24,14 @@ TrueColours.BedTime.prototype.getMinutes = function () {
 
     return parseInt(slice, 10);
 };
+
+TrueColours.BedTime.prototype.getAngle = function () {
+    'use strict';
+
+    var hrs = this.getHours();
+    var min = this.getMinutes() / 60;  // take minutes as decimal fraction
+
+    var time = hrs + min;
+
+    return (360 * time) / 24;
+};
