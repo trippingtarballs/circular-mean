@@ -1,0 +1,9 @@
+{
+  "name": "hairy-adventure",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "2.1.0",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {}
+}
