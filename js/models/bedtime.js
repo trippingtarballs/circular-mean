@@ -1,19 +1,18 @@
 TrueColours.Models = TrueColours.Models || {};
 
-(function () {
+(function (ns) {
     'use strict';
 
-    TrueColours.Models.BedTime = function (hours, minutes) {
+    var BedTime = ns.BedTime = function (hours, minutes) {
         this.hours = hours || 0;
         this.minutes = minutes || 0;
     };
 
-    _.extend(TrueColours.Models.BedTime.prototype, {
-
+    _.extend(BedTime.prototype, {
         getTime: function () {
             return this.minutes + ':' + this.hours;
         }
 
     });
 
-})();
+})(TrueColours.Models);
