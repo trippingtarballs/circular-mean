@@ -35,3 +35,19 @@ TrueColours.BedTime.prototype.getAngle = function () {
 
     return (360 * time) / 24;
 };
+
+TrueColours.BedTime.prototype.getCos = function () {
+    'use strict';
+
+    var angle = this.getAngle();
+
+    return Math.cos(angle);
+};
+
+TrueColours.BedTime.prototype.getSin = function () {
+    'use strict';
+
+    var angle = this.getAngle();
+
+    return Math.sin(angle);
+};
