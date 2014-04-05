@@ -1,27 +1,26 @@
 TrueColours = TrueColours || {};
 
 
-TrueColours.BedTime = function BedTime (hours, minutes) {
+TrueColours.BedTime = function BedTime(time) {
     'use strict';
 
-    this.hours = hours || 0;
-    this.minutes = minutes || 0;
+    this.time = time;
 };
 
-
-TrueColours.BedTime.prototype.getTime = function () {
+TrueColours.BedTime.prototype.getHours = function () {
     'use strict';
 
-    var hrs = this.hours.toString();
-    var min = this.minutes.toString();
+    var index = this.time.indexOf(':');
+    var slice = this.time.slice(0, index);
 
-    if (this.hours < 10) {
-        hrs = '0' + hrs;
-    }
+    return parseInt(slice, 10);
+};
 
-    if (this.minutes < 10) {
-        min = '0' + min;
-    }
+TrueColours.BedTime.prototype.getMinutes = function () {
+    'use strict';
 
-    return hrs + ':' + min;
+    var index = this.time.indexOf(':');
+    var slice = this.time.slice(-index);
+
+    return parseInt(slice, 10);
 };

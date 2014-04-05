@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     console.log('data:', dataPoints);
 
-    var mean = TrueColours.Helpers.getCircularMean(dataPoints);
-    console.log('mean:', mean);
+    window.mean = TrueColours.Helpers.getCircularMean(dataPoints);
+    console.log('mean:', window.mean);
 
 });
