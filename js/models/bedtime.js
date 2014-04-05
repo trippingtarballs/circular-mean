@@ -10,7 +10,18 @@ TrueColours.Models = TrueColours.Models || {};
 
     _.extend(BedTime.prototype, {
         getTime: function () {
-            return this.minutes + ':' + this.hours;
+            var hrs = this.hours.toString();
+            var min = this.minutes.toString();
+
+            if (this.hours < 10) {
+                hrs = '0' + hrs;
+            }
+
+            if (this.minutes < 10) {
+                min = '0' + min;
+            }
+
+            return hrs + ':' + min;
         }
 
     });
