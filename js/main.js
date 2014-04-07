@@ -1,4 +1,5 @@
-TrueColours = window.TrueColours || {};
+TrueColours = window.TrueColours || {
+};
 
 
 $(document).ready(function () {
@@ -14,7 +15,8 @@ $(document).ready(function () {
 
     console.log('data:', dataPoints);
 
-    window.mean = TrueColours.Helpers.getCircularMean(dataPoints);
-    console.log('mean:', window.mean);
+    var mean = window.mean = TrueColours.Helpers.getCircularMean(dataPoints);
+
+    console.log('mean:', mean);
 
 });
