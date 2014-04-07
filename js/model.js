@@ -19,5 +19,4 @@
             return (2 * Math.PI * that.inMinutes) / (24 * 60);
         }(this));
     };
-
 })(TrueColours);

@@ -31,7 +31,5 @@
 
             return collection.getTimeMean();
         }
-
     };
-
 })(TrueColours);
