@@ -1,37 +1,32 @@
-TrueColours = TrueColours || {};
-
 (function (ns) {
     'use strict';
 
-    ns.BedTime = function (time) {
-        this.time = time || '00:00';
+//    ns.BedTime = function (time) {
+//        this.time = time || '00:00';
+//
+//        this.inMinutes = (function (that) {
+//            var time = that.time;
+//            var index = time.indexOf(':');
+//
+//            var total = 0;
+//            total += parseInt(time.slice(-index), 10);          // minutes
+//            total += parseInt(time.slice(0, index), 10) * 60;   // hrs in mins
+//
+//            return total;
+//        }(this));
+//
+//        this.angle = (function (that) {
+//            return (360 * that.inMinutes) / (24 * 60);
+//        }(this));
+//    };
 
-        this.minutes = (function (that) {
-            var index = that.time.indexOf(':');
-            var slice = that.time.slice(-index);
-            return parseInt(slice, 10);
-        }(this));
+    ns.BedTime = function (angle) {
+        this.angle = angle * (Math.PI / 180) || 0;
 
-        this.hours = (function (that) {
-            var index = that.time.indexOf(':');
-            var slice = that.time.slice(0, index);
-            return parseInt(slice, 10);
-        }(this));
-
-        this.angle = (function (that) {
-            var hrs = that.hours;
-            var min = that.minutes / 60;    // fraction of decimal
-            return (360 * (hrs + min)) / 24;
+        this.inMinutes = (function (that) {
+            return (24 * 60 * that.angle) / (2 * Math.PI);
         }(this));
     };
-//
-//    _.extend(BedTime.prototype, {
-//        getCos: function () {
-//            return Math.cos(this.angle);
-//        },
-//        getSin: function () {
-//            return Math.sin(this.angle);
-//        }
-//    });
-//
-}(TrueColours));
+
+
+})(TrueColours);

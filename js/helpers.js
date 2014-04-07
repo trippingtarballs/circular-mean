@@ -1,41 +1,40 @@
-TrueColours = TrueColours || {};
-
-(function (ns) {
+(function () {
     'use strict';
 
-    ns.Helpers = {
+    TrueColours.Helpers = {
         normalizeQuadrant: function (sin, cos, theta) {
 
             // if sin is +ve and cos is -ve (ie 2nd quadrant)
             if (sin > 0 && cos < 0) {
-                return 180 - theta;
+                return Math.PI - theta;
             }
 
             // if sin is -ve and cos is -ve (ie 3rd quadrant)
             if (sin < 0 && cos < 0) {
-                return 180 + theta;
+                return Math.PI + theta;
             }
 
             // if sin is -ve and cos is +ve (ie 4th quadrant)
             if (sin < 0 && cos > 0) {
-                return 360 - theta;
+                return (2 * Math.PI) - Math.abs(theta);
             }
 
             return theta;
         },
 
         getCircularMean: function (listTimes) {
-            var list = [];
+            var collection = new TrueColours.BedTimes();
 
             _.each(listTimes, function (time) {
-                list.push(new ns.BedTime(time));
+                var obj = new TrueColours.BedTime(time);
+                console.log('bt: ', obj);
+                collection.push(obj);
             });
 
-            var bedTimes = new ns.BedTimes(list);
-
-            return bedTimes.getTimeMean();
+            return collection;
+//            return collection.getAngleMean();
         }
 
     };
 
-}(TrueColours));
+})();
