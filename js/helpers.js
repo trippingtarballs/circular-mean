@@ -1,7 +1,7 @@
-(function () {
+(function (ns) {
     'use strict';
 
-    TrueColours.Helpers = {
+    ns.Helpers = {
         normalizeQuadrant: function (sin, cos, theta) {
 
             // if sin is +ve and cos is -ve (ie 2nd quadrant)
@@ -23,18 +23,15 @@
         },
 
         getCircularMean: function (listTimes) {
-            var collection = new TrueColours.BedTimes();
+            var collection = new ns.BedTimes();
 
             _.each(listTimes, function (time) {
-                var obj = new TrueColours.BedTime(time);
-                console.log('bt: ', obj);
-                collection.push(obj);
+                collection.push(new ns.BedTime(time));
             });
 
-            return collection;
-//            return collection.getAngleMean();
+            return collection.getTimeMean();
         }
 
     };
 
-})();
+})(TrueColours);

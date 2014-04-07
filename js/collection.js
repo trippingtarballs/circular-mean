@@ -22,29 +22,25 @@
 
     BedTimes.prototype = {
         getCosMean: function () {
-            var list = _.map(this, function (bt) {
-                return Math.cos(bt.angle);
+            var list = _.map(this, function (bedTime) {
+                return Math.cos(bedTime.angle);
             });
+
             var sum = _.reduce(list, function (memo, cos) {
                 return memo + cos;
             });
-
-            console.log('cos mean sum:', sum);
-            console.log('cos mean length:', this.length);
 
             return sum / this.length;
         },
 
         getSinMean: function () {
-            var list = _.map(this, function (bt) {
-                return Math.sin(bt.angle);
+            var list = _.map(this, function (bedTime) {
+                return Math.sin(bedTime.angle);
             });
+
             var sum = _.reduce(list, function (memo, sin) {
                 return memo + sin;
             });
-
-            console.log('sin mean sum:', sum);
-            console.log('sin mean length:', this.length);
 
             return sum / this.length;
         },
@@ -52,6 +48,7 @@
         getVectorMean: function () {
             var X = this.getCosMean();
             var Y = this.getSinMean();
+
             return Math.sqrt(Math.pow(X, 2) + Math.pow(Y, 2));
         },
 
@@ -61,27 +58,15 @@
 
             var arctanMean = Math.atan(sinMean / cosMean);
 
-            console.log('(Y) mean sin:', sinMean);
-            console.log('(X) mean cos:', cosMean);
-            console.log('mean angle:', arctanMean * (180 / Math.PI));
-
             return ns.Helpers.normalizeQuadrant(sinMean, cosMean, arctanMean);
-//            return arctanMean;
         },
 
         getTimeMean: function () {
-            var hrs;
-            var min;
-            var angle = this.getAngleMean();
+            var time = (24 * this.getAngleMean()) / (2 * Math.PI);
 
-            var time = window.time = (24 * angle) / 360; // in hours
-
-            console.log('time:', time);
-
-            hrs = Math.floor(time);
-            min = ( ((time * 100) % 100) / 100 );   // fraction of decimal
-            min = min * 60;                         // fraction of hour
-            min = Math.round(min);
+            // isolate mantissa, and convert from decimal to mins
+            var min = Math.round(( ((time * 100) % 100) / 100 ) * 60);
+            var hrs = Math.floor(time);
 
             if (hrs < 10) {
                 hrs = '0' + hrs.toString();
@@ -91,7 +76,8 @@
                 min = '0' + min.toString();
             }
 
-            console.log('time:', time, 'hrs:', hrs, 'min:', min);
+            console.log('time:', time);
+            console.log('hrs:', hrs, 'min:', min);
 
             return hrs + ':' + min;
         }
