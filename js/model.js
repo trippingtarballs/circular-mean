@@ -20,3 +20,21 @@
         }(this));
     };
 })(TrueColours);
+
+//
+//describe("unit tests for getCircularMean() function", function () {
+//    beforeEach(function () {
+//        ga = function () {};  // mock-out any Google Analytics dependencies
+//    });
+//
+//    it("should return the average time for a set of sleep-times", function () {
+//        // build input data
+//        var sleepTimes = [ '23:00', '22:30', '23:15', '01:30', '22:00' ];
+//
+//        var expected = '23:14';
+//        var returned = TrueColours.Helpers.getCircularMean(sleepTimes);
+//
+//        // test the result
+//        expect(returned).toBe.(expected);
+//    });
+//});
